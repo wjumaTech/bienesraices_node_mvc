@@ -1,14 +1,25 @@
-import express from 'express'
-import { formularioLogin, formularioOlvidePassword, formularioRegistro, registrar } from '../controllers/usuarioController.js'
+import express from "express";
+import {
+  formularioLogin,
+  formularioOlvidePassword,
+  formularioRegistro,
+  registrar,
+  confirmar,
+  resetPassword
+} from "../controllers/usuarioController.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/auth/login', formularioLogin)
+router.get("/auth/login", formularioLogin);
 
-router.get('/auth/registro', formularioRegistro)
+router.get("/auth/registro", formularioRegistro);
 
-router.post('/auth/registro', registrar)
+router.post("/auth/registro", registrar);
 
-router.get('/auth/olvide-password', formularioOlvidePassword)
+router.get("/auth/confirmar/:token", confirmar);
 
-export default router
+router.get("/auth/olvide-password", formularioOlvidePassword);
+
+router.post("/auth/olvide-password", resetPassword);
+
+export default router;
